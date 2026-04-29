@@ -1,12 +1,40 @@
-header{
-    border: 1px solid black;
+header {
+    margin: 20px 50px 0px 50px;
     border-radius: 15px;
     box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.25);
+    padding: 15px 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-header img{
+header nav {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
 
+nav a:hover {
+    background-color: rgb(97, 97, 97);
+}
+
+nav a {
+    text-decoration: none;
+    color:black;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: rgb(210, 210, 210);
+    padding: 5px; 
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+
+}
+
+header img {
+    
 }
