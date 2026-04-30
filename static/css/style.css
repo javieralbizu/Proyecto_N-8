@@ -59,10 +59,17 @@ table {
     margin-bottom: 5%;
     border-collapse: separate;
     border-spacing: 0;
-    overflow: hidden; /* importante para que funcione el border-radius */
+    overflow: hidden; 
 }
 
 th, td {
     padding: 10px;
     border-bottom: 1px solid #ccc;
+}
+
+main{
+    margin-top: 12%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
