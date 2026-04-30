@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+{% extends "HTML/base.html" %}
+{% block title %}
+Añadir Tecnico
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}  {{ form.as_p }}
+    
+    <button type="submit">Guardar</button>
+</form>
+{% endblock %}
