@@ -8,11 +8,27 @@ Tabla Activos
 
 <table>
     <tr>
-        <th>Encabezado</th>
+        <th>Nombre</th>
+        <th>Codigo activacion</th>
+        <th>Dispositivo</th>
+        <th>Modelo</th>
+        <th>Marca</th>
+        <th>Fecha instalacion</th>
+        <th>Ubicacion</th>
+        <th>Estado operativo</th>
     </tr>
+    {% for Activo in Activos %}
     <tr>
-        <td>Ejemplo</td>
+        <td>{{ Activo.CodigoActivacion }}</td>
+        <td>{{ Activo.Nombre }}</td>
+        <td>{{ Activo.TipoDispositivo }}</td>
+        <td>{{ Activo.Modelo }}</td>
+        <td>{{ Activo.Marca }}</td>
+        <td>{{ Activo.FechaInstalacion }}</td>
+        <td>{{ Activo.Ubicacion }}</td>
+        <td>{{ Activo.EstadoOperativo }}</td>
     </tr>
+    {% endfor %}
 </table>
 
 {% endblock %}

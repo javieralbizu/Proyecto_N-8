@@ -2,5 +2,5 @@ from . import views
 from django.urls import path
 
 urlpatterns = [
-    path('Activos/',views.CargarTabla)
+    path('Incidencias/', views.CargarTablaIncidencias)
 ]

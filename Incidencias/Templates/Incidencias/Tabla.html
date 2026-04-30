@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% extends "HTML/base.html" %}
+{% block title %}
+Tabla Activos
+{% endblock %}
+
+{% block content %}
+
+<table>
+    <tr>
+        <th>Codigo</th>
+        <th>Fecha Apertura</th>
+        <th>Fecha Cierre</th>
+        <th>Tipo de Intervencion</th>
+        <th>Descripcion</th>
+        <th>Tecnico Asignado</th>
+        <th>Activo Asignado</th>
+    </tr>
+    {% for Intervencion in Incidencias %}
+    <tr>
+        <td>{{ Intervencion.Codigo }}</td>
+        <td>{{ Intervencion.FechaApertura }}</td>
+        <td>{{ Intervencion.FechaCierra }}</td>
+        <td>{{ Intervencion.TipoIntervencion }}</td>
+        <td>{{ Intervencion.Descripcion }}</td>
+        <td>{{ Intervencion.TecnicoAsignado }}</td>
+        <td>{{ Intervencion.ActivoAsignado }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
