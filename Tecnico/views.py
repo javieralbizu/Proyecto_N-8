@@ -6,14 +6,12 @@ def CargarTabla(request):
     tecnicos = Trabajador.objects.all()
     return render(request, 'Tecnico/Tabla.html', {'lista': tecnicos})
 
-def nuevo_trabajador(request):
+def NuevoTrabajador(request):
     if request.method == 'POST':
         form = TrabajadorForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('CargarTabla')
-    else:
-        form = TrabajadorForm()
+    else:  
+        return render(request, 'Tecnico/NuevoTrabajador.html', {'form': TrabajadorForm()})
 
-    return render(request, 'Tecnico/nuevo_trabajador.html', {'form': form})
-# Create your views here.

@@ -52,22 +52,24 @@ footer {
 }
 
 table {
-    background-color:white;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+    background-color: white;
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     width: 80%;
+    padding: 0px;
     margin-bottom: 5%;
     border-collapse: separate;
     border-spacing: 0;
-    overflow: hidden; 
 }
 
-th, td {
+th,
+td {
+    text-align: left;
     padding: 10px;
     border-bottom: 1px solid #ccc;
 }
 
-main{
+main {
     margin-top: 12%;
     display: flex;
     justify-content: center;
