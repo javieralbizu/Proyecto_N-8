@@ -12,6 +12,8 @@ def NuevoTrabajador(request):
         if form.is_valid():
             form.save()
             return redirect('CargarTabla')
+        else:
+            return render(request, 'Tecnico/NuevoTrabajador.html', {'form': form})
     else:  
         return render(request, 'Tecnico/NuevoTrabajador.html', {'form': TrabajadorForm()})
 

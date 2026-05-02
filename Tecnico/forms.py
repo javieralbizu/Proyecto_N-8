@@ -1,9 +1,15 @@
 from django import forms
+from . import models
 
-class TrabajadorForm(forms.Form):
-    DNI = forms.CharField(label="DNI", max_length=9)
-    Nombre = forms.CharField(label="Nombre", max_length=30)
-    Apellido = forms.CharField(label="Apellido", max_length=40)
-    Email = forms.EmailField(label="Correo Electronico")
-    Telefono = forms.CharField(label="Telefono")
+class TrabajadorForm(forms.ModelForm):
+    class Meta:
+        model = models.Trabajador
+        fields = ['DNI', 'Nombre','Apellido', 'Email','Telefono']
+        widgets = { 
+            'DNI' : forms.TextInput(),
+            'Nombre' : forms.TextInput(),
+            'Apellido' : forms.TextInput(),
+            'Email' : forms.EmailInput(),
+            'Telefono' : forms.NumberInput()
+        }
 
