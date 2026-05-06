@@ -12,6 +12,7 @@ Tabla Tecnico
         <th>Apelido</th>
         <th>Email</th>
         <th>Telefono</th>
+        <th>Acciones</th>
         
     </tr>
     {% for Trabajador in lista %}
@@ -21,6 +22,10 @@ Tabla Tecnico
         <td>{{ Trabajador.Apellido }}</td>
         <td>{{ Trabajador.Email }}</td>
         <td>{{ Trabajador.Telefono }}</td>
+        <td>
+            <a href="{% url 'EditarTrabajador' Trabajador.id %}" ><button>Editar</button></a>
+            <a href="{% url 'EliminarTrabajador' Trabajador.id %}" ><button>Eliminar</button></a>
+        </td>
         
     </tr>
     {% endfor %}
