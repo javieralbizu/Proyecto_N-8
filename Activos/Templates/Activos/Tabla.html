@@ -16,6 +16,7 @@ Tabla Activos
         <th>Fecha instalacion</th>
         <th>Ubicacion</th>
         <th>Estado operativo</th>
+        <th>Acciones</th>
     </tr>
     {% for Activo in Activos %}
     <tr>
@@ -27,6 +28,10 @@ Tabla Activos
         <td>{{ Activo.FechaInstalacion }}</td>
         <td>{{ Activo.Ubicacion }}</td>
         <td>{{ Activo.EstadoOperativo }}</td>
+        <td>
+            <a href="{% url 'EditarActivo' Activo.id %}"><button>Editar</button></a>
+            <a href="{% url 'EliminarActivo' Activo.id %}"><button>Eliminar</button></a>
+        </td>
     </tr>
     {% endfor %}
 </table>
