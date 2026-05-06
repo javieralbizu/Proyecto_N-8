@@ -83,14 +83,16 @@ form {
     width: 40%;
     padding: 20px;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> b8d46ef (Error css corregido)
+=======
+>>>>>>> 47dcaa1 (Corregido formulario css)
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-bottom: 4%;
-    
 }
 
 form label {
