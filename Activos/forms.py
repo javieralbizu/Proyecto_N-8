@@ -11,7 +11,7 @@ class ActivoForm(forms.ModelForm):
             'TipoDispositivo' : forms.TextInput(),
             'Modelo' : forms.TextInput(),
             'Marca' : forms.TextInput(),
-            'FechaInstalacion' : forms.DateInput(),
+            'FechaInstalacion' : forms.DateInput(attrs= {'type': 'date'}),
             'Ubicacion' : forms.TextInput(),
             'EstadoOperativo' : forms.CheckboxInput()
         }
