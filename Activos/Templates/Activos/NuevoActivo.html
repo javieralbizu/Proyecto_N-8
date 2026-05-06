@@ -5,7 +5,7 @@ Añadir Activo
 {% endblock %}
 
 {% block content %}
-<form method="post">
+<form method="post" class="formulario">
     {% csrf_token %} 
     {{ form.as_p }} <!--Esto es para poner los input en columna. Esto mas adelante hay que quitar .asp y utilizar flex direction column-->
     
