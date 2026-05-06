@@ -6,6 +6,6 @@ class Activo (models.Model):
     TipoDispositivo = models.CharField(max_length=200)
     Modelo = models.CharField(max_length=200)
     Marca = models.CharField(max_length=100)
-    FechaInstalacion = models.DateField(auto_now_add=True)
+    FechaInstalacion = models.DateField()
     Ubicacion = models.CharField(max_length=200)
     EstadoOperativo = models.BooleanField(default=False)

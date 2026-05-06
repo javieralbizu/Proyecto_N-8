@@ -11,8 +11,8 @@ def NuevoActivo(request):
             form.save()
             return redirect('CargarTabla')
         else:
-            return render(request, 'Tecnico/NuevoActivo.html', {'form': form})
+            return render(request, 'Activos/NuevoActivo.html', {'form': form})
     else:  
-        return render(request, 'Tecnico/NuevoActivo.html', {'form': ActivoForm()})
+        return render(request, 'Activos/NuevoActivo.html', {'form': ActivoForm()})
     
 # Create your views here.

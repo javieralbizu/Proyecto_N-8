@@ -4,14 +4,14 @@ from . import models
 class ActivoForm(forms.ModelForm):
     class Meta:
         model = models.Activo
-        fields = ['Codigo de Activacion','Nombre','Tipo de dispositivo','Modelo','Marca','Fecha de instalacion','Ubicacion','Estado operativo']
+        fields = ['CodigoActivacion','Nombre','TipoDispositivo','Modelo','Marca','FechaInstalacion','Ubicacion','EstadoOperativo']
         widgets = { 
-            'Codigo de Activacion' : forms.NumberInput(),
+            'CodigoActivacion' : forms.NumberInput(),
             'Nombre' : forms.TextInput(),
-            'Tipo de dispositivo' : forms.TextInput(),
+            'TipoDispositivo' : forms.TextInput(),
             'Modelo' : forms.TextInput(),
             'Marca' : forms.TextInput(),
-            'Fecha de instalacion' : forms.DateInput(),
+            'FechaInstalacion' : forms.DateInput(),
             'Ubicacion' : forms.TextInput(),
-            'Estado operativo' : forms.CheckboxInput()
+            'EstadoOperativo' : forms.CheckboxInput()
         }
