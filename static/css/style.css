@@ -82,6 +82,7 @@ form {
     border-radius: 10px;
     width: 40%;
     padding: 20px;
+    
     display: flex;
     flex-direction: column;
     gap: 10px;
