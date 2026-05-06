@@ -16,8 +16,8 @@ class IntervencionForm(forms.ModelForm):
         fields = ['Codigo','FechaApertura','FechaCierra','TipoIntervencion','Descripcion','TecnicoAsignado','ActivoAsignado']
         widgets = { 
             'Codigo' : forms.NumberInput(),
-            'FechaApertura' : forms.DateInput(),
-            'FechaCierra' : forms.DateInput(),
+            'FechaApertura' : forms.DateInput(attrs={'type':'date'}),
+            'FechaCierra' : forms.DateInput(attrs={'type':'date'}),
             'TipoIntervencion' : forms.TextInput(),
             'Descripcion' : forms.TextInput(),
         }

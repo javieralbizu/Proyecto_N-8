@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% extends "HTML/base.html" %}
 {% block title %}
-Tabla Activos
+Tabla Incidencias
 {% endblock %}
 
 {% block content %}
@@ -15,6 +15,7 @@ Tabla Activos
         <th>Descripcion</th>
         <th>Tecnico Asignado</th>
         <th>Activo Asignado</th>
+        <th>Acciones</th>
     </tr>
     {% for Intervencion in Incidencias %}
     <tr>
@@ -25,6 +26,10 @@ Tabla Activos
         <td>{{ Intervencion.Descripcion }}</td>
         <td>{{ Intervencion.TecnicoAsignado }}</td>
         <td>{{ Intervencion.ActivoAsignado }}</td>
+        <td>
+            <a href="{% url 'EditarIncidencia' Intervencion.id %}"><button>Editar</button></a>
+            <a href="{% url 'EliminarIncidencia' Intervencion.id %}"><button>Eliminar</button></a>
+        </td>
     </tr>
     {% endfor %}
 </table>
