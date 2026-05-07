@@ -44,7 +44,7 @@ header img {
 }
 
 footer {
-    margin-top: 20px;
+    margin-top: auto;
     padding-top: 10px;
     padding-left: 10px;
     border-top: 1px solid black;
@@ -69,14 +69,14 @@ td {
     border-bottom: 1px solid #ccc;
 }
 
-.editar{
+.editar {
     padding: 5px;
     background-color: rgba(3, 73, 224, 0.671);
     border-radius: 10px;
     color: white;
 }
 
-.eliminar{
+.eliminar {
     padding: 5px;
     background-color: rgba(224, 3, 7, 0.671);
     border-radius: 10px;
@@ -101,7 +101,7 @@ form {
     flex-direction: column;
     gap: 10px;
     margin-bottom: 4%;
-    
+
 }
 
 form label {
@@ -109,12 +109,13 @@ form label {
     margin-bottom: 10px;
 }
 
-form input, form select{
+form input,
+form select {
     width: 100%;
     padding: 8px;
     margin-top: 5px;
     border: 1px solid #ccc;
-    border-radius: 4px; 
+    border-radius: 4px;
     box-sizing: border-box;
 }
 
@@ -125,11 +126,13 @@ form button {
     padding: 10px 20px;
     cursor: pointer;
 }
-form input[type="checkbox"]{
+
+form input[type="checkbox"] {
     width: 18px;
     height: 18px;
     margin: 0;
 }
+
 form button:hover {
     background-color: rgb(97, 97, 97);
 }
@@ -142,23 +145,20 @@ form button:hover {
     width: 100%;
 }
 
-
 .header-inicio {
     display: flex;
-    align-items: center; 
+    align-items: center;
     width: 100%;
-    position: relative; 
+    position: relative;
     margin-bottom: 30px;
 }
-
 
 .deusto_logo {
     max-width: 200px;
     height: auto;
-    position: absolute; 
+    position: absolute;
     left: 20px;
 }
-
 
 .titulo {
     flex: 1;
@@ -168,7 +168,6 @@ form button:hover {
     margin: 0;
 }
 
-
 .texto_Inicio {
     text-align: center;
     max-width: 800px;
@@ -177,13 +176,13 @@ form button:hover {
     color: #333;
 }
 
-.contenedor_boton{
+.contenedor_boton {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.contenedor_boton button{
+.contenedor_boton button {
     text-decoration: none;
     color: black;
     border: 2px solid black;
