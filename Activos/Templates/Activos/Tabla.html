@@ -5,16 +5,16 @@ Tabla Activos
 {% endblock %}
 
 {% block content %}
-
+<h1>Activos</h1>
 <table>
     <tr>
-        <th>Codigo activacion</th>
+        <th>Código activacion</th>
         <th>Nombre</th>
         <th>Dispositivo</th>
         <th>Modelo</th>
         <th>Marca</th>
         <th>Fecha instalacion</th>
-        <th>Ubicacion</th>
+        <th>Ubicación</th>
         <th>Estado operativo</th>
         <th>Acciones</th>
     </tr>
@@ -35,5 +35,7 @@ Tabla Activos
     </tr>
     {% endfor %}
 </table>
-
+<div class="contenedor_boton">
+    <a href="{% url 'NuevoActivo' %}"><button>Nuevo Activo</button></a>
+</div>
 {% endblock %}

@@ -6,6 +6,8 @@ Tabla Incidencias
 
 {% block content %}
 
+
+<h1>Incidencias</h1>
 <table>
     <tr>
         <th>Código</th>
@@ -33,5 +35,9 @@ Tabla Incidencias
     </tr>
     {% endfor %}
 </table>
+<div class="contenedor_boton">
+    <a href="{% url 'IncidenciaNueva' %}"><button>Nueva Incidencia</button></a>
+</div>
+
 
 {% endblock %}

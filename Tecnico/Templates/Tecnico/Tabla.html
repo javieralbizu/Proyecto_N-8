@@ -4,7 +4,7 @@ Tabla Tecnico
 {% endblock %}
 
 {% block content %}
-
+<h1>Técnicos</h1>
 <table>
     <tr>
         <th>DNI</th>
@@ -30,5 +30,8 @@ Tabla Tecnico
     </tr>
     {% endfor %}
 </table>
+<div class="contenedor_boton">
+    <a href="{% url 'NuevoTecnico' %}"><button>Nuevo Técnico</button></a>
+</div>
 
 {% endblock %}
