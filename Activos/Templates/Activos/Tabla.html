@@ -29,8 +29,8 @@ Tabla Activos
         <td>{{ Activo.Ubicacion }}</td>
         <td>{{ Activo.EstadoOperativo }}</td>
         <td>
-            <a href="{% url 'EditarActivo' Activo.id %}"><button>Editar</button></a>
-            <a href="{% url 'EliminarActivo' Activo.id %}"><button>Eliminar</button></a>
+            <a href="{% url 'EditarActivo' Activo.id %}"><button class="editar">Editar</button></a>
+            <a href="{% url 'EliminarActivo' Activo.id %}"><button class="eliminar">Eliminar</button></a>
         </td>
     </tr>
     {% endfor %}

@@ -69,6 +69,20 @@ td {
     border-bottom: 1px solid #ccc;
 }
 
+.editar{
+    padding: 5px;
+    background-color: rgba(3, 73, 224, 0.671);
+    border-radius: 10px;
+    color: white;
+}
+
+.eliminar{
+    padding: 5px;
+    background-color: rgba(224, 3, 7, 0.671);
+    border-radius: 10px;
+    color: white;
+}
+
 main {
     margin-top: 4%;
     display: flex;
