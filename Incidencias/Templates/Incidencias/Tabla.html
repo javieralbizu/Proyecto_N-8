@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% extends "HTML/base.html" %}
+{% block title %}
+Tabla Incidencias
+{% endblock %}
+
+{% block content %}
+
+<table>
+    <tr>
+        <th>Codigo</th>
+        <th>Fecha Apertura</th>
+        <th>Fecha Cierre</th>
+        <th>Tipo de Intervencion</th>
+        <th>Descripcion</th>
+        <th>Tecnico Asignado</th>
+        <th>Activo Asignado</th>
+        <th>Acciones</th>
+    </tr>
+    {% for Intervencion in Incidencias %}
+    <tr>
+        <td>{{ Intervencion.Codigo }}</td>
+        <td>{{ Intervencion.FechaApertura }}</td>
+        <td>{{ Intervencion.FechaCierra }}</td>
+        <td>{{ Intervencion.TipoIntervencion }}</td>
+        <td>{{ Intervencion.Descripcion }}</td>
+        <td>{{ Intervencion.TecnicoAsignado }}</td>
+        <td>{{ Intervencion.ActivoAsignado }}</td>
+        <td>
+            <a href="{% url 'EditarIncidencia' Intervencion.id %}"><button>Editar</button></a>
+            <a href="{% url 'EliminarIncidencia' Intervencion.id %}"><button>Eliminar</button></a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

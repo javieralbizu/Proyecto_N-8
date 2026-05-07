@@ -1,0 +1,34 @@
+{% extends "HTML/base.html" %}
+{% block title %}
+Tabla Tecnico
+{% endblock %}
+
+{% block content %}
+
+<table>
+    <tr>
+        <th>DNI</th>
+        <th>Nombre</th>
+        <th>Apelido</th>
+        <th>Email</th>
+        <th>Telefono</th>
+        <th>Acciones</th>
+        
+    </tr>
+    {% for Trabajador in lista %}
+    <tr>
+        <td>{{ Trabajador.DNI }}</td>
+        <td>{{ Trabajador.Nombre }}</td>
+        <td>{{ Trabajador.Apellido }}</td>
+        <td>{{ Trabajador.Email }}</td>
+        <td>{{ Trabajador.Telefono }}</td>
+        <td>
+            <a href="{% url 'EditarTrabajador' Trabajador.id %}" ><button>Editar</button></a>
+            <a href="{% url 'EliminarTrabajador' Trabajador.id %}" ><button>Eliminar</button></a>
+        </td>
+        
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

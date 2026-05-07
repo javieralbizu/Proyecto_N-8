@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% extends "HTML/base.html" %}
+{% block title %}
+Añadir Intervencion
+{% endblock %}
+
+{% block content %}
+<form method="post">
+
+    {% csrf_token %} 
+    {{ form }} <!--Esto es para poner los input en columna. Esto mas adelante hay que quitar .asp y utilizar flex direction column-->
+    
+    <button type="submit">Guardar</button>
+</form>
+{% endblock %}
