@@ -1,31 +1,31 @@
-from .forms import TrabajadorForm
+from .forms import TecnicoForm
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Trabajador
+from .models import Tecnico
 
 
 def CargarTabla(request):
-    tecnicos = Trabajador.objects.all()
+    tecnicos = Tecnico.objects.all()
     return render(request, "Tecnico/Tabla.html", {"lista": tecnicos})
 
 
-def NuevoTrabajador(request, id=None):
+def NuevoTecnico(request, id=None):
     if id:
-        trabajador = get_object_or_404(Trabajador,id = id)
+        trabajador = get_object_or_404(Tecnico,id = id)
     else:
         trabajador = None
 
     if request.method == "POST":
-        form = TrabajadorForm(request.POST, instance=trabajador)
+        form = TecnicoForm(request.POST, instance=trabajador)
         if form.is_valid():
             form.save()
-            return redirect("CargarTabla")
+            return redirect("TablaTecnico")
 
     else:
-        form = TrabajadorForm(instance=trabajador)
+        form = TecnicoForm(instance=trabajador)
     return render(request, "Tecnico/NuevoTrabajador.html", {"form": form})
 
 def EliminarTecnico(request, id):
-    trabajador = get_object_or_404(Trabajador,id = id)
+    trabajador = get_object_or_404(Tecnico, id = id)
     trabajador.delete()
-    return redirect('CargarTabla')
+    return redirect('TablaTecnico')
 

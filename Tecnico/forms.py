@@ -1,9 +1,9 @@
 from django import forms
 from . import models
 
-class TrabajadorForm(forms.ModelForm):
+class TecnicoForm(forms.ModelForm):
     class Meta:
-        model = models.Trabajador
+        model = models.Tecnico
         fields = ['DNI', 'Nombre','Apellido', 'Email','Telefono']
         widgets = { 
             'DNI' : forms.TextInput(),

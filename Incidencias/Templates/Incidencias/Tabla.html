@@ -8,20 +8,20 @@ Tabla Incidencias
 
 <table>
     <tr>
-        <th>Codigo</th>
-        <th>Fecha Apertura</th>
-        <th>Fecha Cierre</th>
-        <th>Tipo de Intervencion</th>
-        <th>Descripcion</th>
-        <th>Tecnico Asignado</th>
-        <th>Activo Asignado</th>
+        <th>Código</th>
+        <th>Fecha apertura</th>
+        <th>Fecha cierre</th>
+        <th>Tipo de intervención</th>
+        <th>Descripción</th>
+        <th>Técnico asignado</th>
+        <th>Activo asignado</th>
         <th>Acciones</th>
     </tr>
     {% for Intervencion in Incidencias %}
     <tr>
         <td>{{ Intervencion.Codigo }}</td>
         <td>{{ Intervencion.FechaApertura }}</td>
-        <td>{{ Intervencion.FechaCierra }}</td>
+        <td>{{ Intervencion.FechaCierre }}</td>
         <td>{{ Intervencion.TipoIntervencion }}</td>
         <td>{{ Intervencion.Descripcion }}</td>
         <td>{{ Intervencion.TecnicoAsignado }}</td>

@@ -1,6 +1,6 @@
 from django.db import models
 
-class Trabajador (models.Model):
+class Tecnico (models.Model):
     DNI = models.CharField(max_length=9)
     Nombre = models.CharField(max_length=30)
     Apellido = models.CharField(max_length=40)
