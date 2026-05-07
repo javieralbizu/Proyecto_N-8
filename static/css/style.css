@@ -44,7 +44,7 @@ header img {
 }
 
 footer {
-    margin-top: auto;
+    margin-top: 20px;
     padding-top: 10px;
     padding-left: 10px;
     border-top: 1px solid black;
@@ -57,7 +57,7 @@ table {
     border-radius: 10px;
     width: 80%;
     padding: 0px;
-    margin-bottom: 5%;
+    margin-bottom: 30px;
     border-collapse: separate;
     border-spacing: 0;
 }
@@ -84,7 +84,7 @@ td {
 }
 
 main {
-    margin-top: 4%;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
