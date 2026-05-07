@@ -10,10 +10,10 @@
     <header>
         <img src="{% static 'imagenes/logo.png' %}">
         <nav>
-            <a href="">Inicio</a>
-            <a href="">Tecnicos</a>
-            <a href="">Activos</a>
-            <a href="">Incidencias</a>
+            <a href="{% url 'inicio' %}">Inicio</a>
+            <a href="{% url 'CargarTabla' %}">Tecnicos</a>
+            <a href="{% url 'TablaActivos' %}">Activos</a>
+            <a href="{% url 'TablaIncidencias' %}">Incidencias</a>
         </nav>
     </header>
     <main>
