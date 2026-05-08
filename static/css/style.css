@@ -112,6 +112,7 @@ form label {
 
 form input,
 form select {
+    font-family: Arial, Helvetica, sans-serif;
     width: 100%;
     padding: 8px;
     margin-top: 5px;
