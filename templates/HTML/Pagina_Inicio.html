@@ -1,4 +1,5 @@
 {% extends "HTML/base.html" %}
+{% load static %}
 {% block title %} Inicio {% endblock %}
 
 {% block content %}
@@ -13,9 +14,7 @@
         Esta plataforma permite registrar dispositivos, controlar su estado operativo y organizar las intervenciones de mantenimiento.
     </p>
 
-    <video class="VideoInicio"autoplay muted>
-        <source src="static/imagenes/video.mp4">
-        Tu navegador no soporta reproducción de video.
-    </video>
+    <img src="{% static 'imagenes/Video.gif' %}"  >
+        
 </div>
 {% endblock %}
