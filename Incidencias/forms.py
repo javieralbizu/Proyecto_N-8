@@ -19,8 +19,8 @@ class IntervencionForm(forms.ModelForm):
         labels = {'Codigo':'Código', 'FechaApertura':'Fecha de Apertura', 'FechaCierre':'Fecha de Cierre','Descripcion':'Descripción' }
         widgets = { 
             'Codigo' : forms.NumberInput(),
-            'FechaApertura' : forms.DateInput(attrs={'type':'date'}),
-            'FechaCierre' : forms.DateInput(attrs={'type':'date'}),
+            'FechaApertura' : forms.DateInput(format='%Y-%m-%d',attrs={'type':'date'}),
+            'FechaCierre' : forms.DateInput(format='%Y-%m-%d',attrs={'type':'date'}),
             'TipoIntervencion' : forms.TextInput(),
             'Descripcion' : forms.TextInput(),
         }
