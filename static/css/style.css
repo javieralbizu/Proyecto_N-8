@@ -201,3 +201,61 @@ form button:hover {
     border-radius: 15px;
     box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.25);   
 }
+
+
+@media (max-width: 768px) {
+    
+
+    header {
+        margin: 10px;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        text-align: center;
+    }
+
+    header nav {
+        justify-content: center;
+        gap: 10px;
+    }
+
+    
+    form {
+        width: 90%;
+        padding: 15px;
+    }
+
+    
+    main {
+        padding: 10px;
+        overflow-x: hidden; 
+    }
+
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto; 
+        white-space: nowrap; 
+    }
+
+    
+    .header-inicio {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .deusto_logo {
+        position: static; 
+        margin-bottom: 10px;
+        max-width: 150px;
+    }
+
+    .titulo {
+        font-size: 1.5rem;
+    }
+
+    .VideoInicio {
+        width: 100%;
+        height: auto;
+    }
+}
