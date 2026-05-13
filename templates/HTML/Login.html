@@ -1,0 +1,20 @@
+{% extends "HTML/base.html" %}
+{% load static %}
+{% block title %} Inicio {% endblock %}
+
+{% block content%}
+<h1>Inicio Sesión</h1>
+<form>
+    <div>
+        <label>Usuario</label>
+        <input type="text" id="user">
+    </div>
+    <div>
+        <label>Contraseña</label>
+        <input type="password" id="pass">
+    </div>
+    <button type="button" onclick="conectar()">Enviar</button>
+</form>
+<script src="{% static 'js/Login.js' %}"></script>
+
+{% endblock %}
