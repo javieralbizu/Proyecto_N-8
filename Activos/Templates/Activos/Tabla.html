@@ -29,13 +29,13 @@ Tabla Activos
         <td>{{ Activo.Ubicacion }}</td>
         <td>{{ Activo.EstadoOperativo }}</td>
         <td>
-            <a href="{% url 'EditarActivo' Activo.id %}"><button class="editar">Editar</button></a>
-            <a href="{% url 'EliminarActivo' Activo.id %}"><button class="eliminar">Eliminar</button></a>
+            <a href="{% url 'EditarActivo' Activo.id %}?token={{ jwt_token }}"><button class="editar">Editar</button></a>
+            <a href="{% url 'EliminarActivo' Activo.id %}?token={{ jwt_token }}"><button class="eliminar">Eliminar</button></a>
         </td>
     </tr>
     {% endfor %}
 </table>
 <div class="contenedor_boton">
-    <a href="{% url 'NuevoActivo' %}"><button>Nuevo Activo</button></a>
+    <a href="{% url 'NuevoActivo' %}?token={{ jwt_token }}"><button>Nuevo Activo</button></a>
 </div>
 {% endblock %}

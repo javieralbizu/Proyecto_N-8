@@ -4,11 +4,13 @@ from .models import Tecnico
 
 
 def CargarTabla(request):
+    token = request.GET.get("token")
     tecnicos = Tecnico.objects.all()
-    return render(request, "Tecnico/Tabla.html", {"lista": tecnicos})
+    return render(request, "Tecnico/Tabla.html", {"lista": tecnicos, "jwt_token":token})
 
 
 def NuevoTecnico(request, id=None):
+    token = request.GET.get("token")
     if id:
         trabajador = get_object_or_404(Tecnico,id = id)
     else:
@@ -18,14 +20,15 @@ def NuevoTecnico(request, id=None):
         form = TecnicoForm(request.POST, instance=trabajador)
         if form.is_valid():
             form.save()
-            return redirect("TablaTecnico")
+            return redirect(f"/Tecnico/?token={token}")
 
     else:
         form = TecnicoForm(instance=trabajador)
-    return render(request, "Tecnico/NuevoTrabajador.html", {"form": form})
+    return render(request, "Tecnico/NuevoTrabajador.html", {"form": form, "jwt_token": token})
 
 def EliminarTecnico(request, id):
+    token = request.GET.get("token")
     trabajador = get_object_or_404(Tecnico, id = id)
     trabajador.delete()
-    return redirect('TablaTecnico')
+    return redirect(f"/Tecnico/?token={token}")
 

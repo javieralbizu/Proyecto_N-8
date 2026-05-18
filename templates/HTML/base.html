@@ -11,13 +11,13 @@
     <header>
         <img src="{% static 'imagenes/logo.png' %}">
         <nav>
-            <a href="{% url 'inicio' %}">Inicio</a>
-            <a href="{% url 'TablaTecnico' %}">Tecnicos</a>
-            <a href="{% url 'TablaActivos' %}">Activos</a>
-            <a href="{% url 'TablaIncidencias' %}">Incidencias</a>
+            <a href="{% url 'inicio' %}?token={{ jwt_token }}">Inicio</a>
+            <a href="{% url 'TablaTecnico' %}?token={{ jwt_token }}">Tecnicos</a>
+            <a href="{% url 'TablaActivos' %}?token={{ jwt_token }}">Activos</a>
+            <a href="{% url 'TablaIncidencias' %}?token={{ jwt_token }}">Incidencias</a>
         </nav>
         <nav>
-            <a href="{% url 'mi_login_page' %}" >Iniciar Sesion</a>
+            <a href="{% url 'mi_login_page' %}">Iniciar Sesion</a>
         </nav>
     </header>
     <main>
@@ -28,5 +28,5 @@
     <footer>
         <p>2026 Deusto Smart Industry- Todos los derechos reservados.</p>
     </footer>
-<script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>

@@ -23,15 +23,17 @@ Tabla Tecnico
         <td>{{ Trabajador.Email }}</td>
         <td>{{ Trabajador.Telefono }}</td>
         <td>
-            <a href="{% url 'EditarTecnico' Trabajador.id %}" ><button class="editar">Editar</button></a>
-            <a href="{% url 'EliminarTecnico' Trabajador.id %}" ><button class="eliminar">Eliminar</button></a>
+            <a href="{% url 'EditarTecnico' Trabajador.id %}?token={{ jwt_token }}" ><button class="editar">Editar</button></a>
+            <a href="{% url 'EliminarTecnico' Trabajador.id %}?token={{ jwt_token }}" ><button class="eliminar">Eliminar</button></a>
         </td>
         
     </tr>
     {% endfor %}
 </table>
+
 <div class="contenedor_boton">
-    <a href="{% url 'NuevoTecnico' %}"><button>Nuevo Técnico</button></a>
+    <a href="{% url 'NuevoTecnico' %}?token={{ jwt_token }}"><button>Nuevo Técnico</button></a>
 </div>
+
 
 {% endblock %}
