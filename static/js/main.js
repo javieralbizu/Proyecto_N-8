@@ -31,7 +31,7 @@ async function comprobarLogin() {
 }
 comprobarLogin();
 
-const formulario = document.querySelector('form');
+const formulario = document.querySelector('form:not(.formbuscador)');
 
 if (formulario) {
     formulario.onsubmit = function () {

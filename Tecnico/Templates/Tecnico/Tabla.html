@@ -5,6 +5,15 @@ Tabla Tecnico
 
 {% block content %}
 <h1>Técnicos</h1>
+<form method="GET" action="" class="formbuscador">
+    <input type="hidden" name="token" value="{{ jwt_token }}">
+    <input type="text" name="buscar" value="{{ busqueda }}" placeholder="Buscar por nombre..." class="input-buscador">
+    <button type="submit" class="boton-buscador">Buscar</button>
+    
+    {% if busqueda %}
+        <a href="?token={{ jwt_token }}" class="LinkLimpiar">Limpiar</a>
+    {% endif %}
+</form>
 <table>
     <tr>
         <th>DNI</th>

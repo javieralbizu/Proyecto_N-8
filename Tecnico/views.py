@@ -4,10 +4,21 @@ from .models import Tecnico
 
 
 def CargarTabla(request):
-    token = request.GET.get("token")
-    tecnicos = Tecnico.objects.all()
-    return render(request, "Tecnico/Tabla.html", {"lista": tecnicos, "jwt_token":token})
+    token = request.GET.get("token", "")
+    terminoBusqueda = request.GET.get('buscar', '')
 
+    if terminoBusqueda:
+       
+        tecnicos = Tecnico.objects.filter(Nombre__icontains=terminoBusqueda)
+    else:
+      
+        tecnicos = Tecnico.objects.all()
+        
+    return render(request, "Tecnico/Tabla.html", {
+        "lista": tecnicos, 
+        "jwt_token": token,
+        "busqueda": terminoBusqueda
+    })
 
 def NuevoTecnico(request, id=None):
     token = request.GET.get("token")
