@@ -1,11 +1,18 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.paginator import Paginator
 from .models import Activo
 from .forms import ActivoForm
 
 def TablaActivos(request):
     token = request.GET.get("token")
-    Activos = Activo.objects.all()
-    return render(request, 'Activos/Tabla.html', {'Activos': Activos, 'jwt_token':token})
+    activos_list = Activo.objects.all().order_by('CodigoActivacion')
+    paginator = Paginator(activos_list, 8)
+    numero_pagina = request.GET.get("page")
+    activos_paginados = paginator.get_page(numero_pagina)
+    return render(request, 'Activos/Tabla.html', {
+        'Activos': activos_paginados, 
+        'jwt_token': token
+    })
 
 
 def NuevoActivo(request, id=None):

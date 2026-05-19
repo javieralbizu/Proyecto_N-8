@@ -35,6 +35,17 @@ Tabla Activos
     </tr>
     {% endfor %}
 </table>
+{% if Activos.has_previous %}
+    <a href="?page=1&token={{ jwt_token }}">Primero</a>
+    <a href="?page={{ Activos.previous_page_number }}&token={{ jwt_token }}">Anterior</a>
+{% endif %}
+
+<span>Página {{ Activos.number }} de {{ Activos.paginator.num_pages }}</span>
+
+{% if Activos.has_next %}
+    <a href="?page={{ Activos.next_page_number }}&token={{ jwt_token }}">Siguiente</a>
+    <a href="?page={{ Activos.paginator.num_pages }}&token={{ jwt_token }}">Último</a>
+{% endif %}
 <div class="contenedor_boton">
     <a href="{% url 'NuevoActivo' %}?token={{ jwt_token }}"><button>Nuevo Activo</button></a>
 </div>
