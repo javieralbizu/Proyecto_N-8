@@ -4,10 +4,21 @@ from .models import Intervencion
 from django.conf import settings
 from django.core.mail import send_mail
 
+
 def CargarTablaIncidencias(request):
-    token = request.GET.get("token")
-    intervenciones = Intervencion.objects.all()
-    return render(request, 'Incidencias/Tabla.html',{'Incidencias':intervenciones, "jwt_token":token} )
+    token = request.GET.get("token", "")
+    terminoBusqueda = request.GET.get('buscar', '')
+    
+    if terminoBusqueda:
+        intervenciones = Intervencion.objects.filter(TipoIntervencion__icontains=terminoBusqueda)
+    else:
+        intervenciones = Intervencion.objects.all()
+        
+    return render(request, 'Incidencias/Tabla.html', {
+        'Incidencias': intervenciones, 
+        'jwt_token': token,
+        'busqueda': terminoBusqueda
+    })
 
 def NuevaIncidencia(request, id=None):
     token = request.GET.get("token")
