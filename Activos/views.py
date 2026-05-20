@@ -4,14 +4,22 @@ from .models import Activo
 from .forms import ActivoForm
 
 def TablaActivos(request):
-    token = request.GET.get("token")
-    activos_list = Activo.objects.all().order_by('CodigoActivacion')
+    token = request.GET.get("token", "")
+    terminoBusqueda = request.GET.get('buscar', '')
+
+    if terminoBusqueda:
+        activos_list = Activo.objects.filter(Nombre__icontains=terminoBusqueda).order_by('CodigoActivacion')
+    else:
+        activos_list = Activo.objects.all().order_by('CodigoActivacion')
+
     paginator = Paginator(activos_list, 8)
     numero_pagina = request.GET.get("page")
     activos_paginados = paginator.get_page(numero_pagina)
+    
     return render(request, 'Activos/Tabla.html', {
         'Activos': activos_paginados, 
-        'jwt_token': token
+        'jwt_token': token,
+        'busqueda': terminoBusqueda
     })
 
 
