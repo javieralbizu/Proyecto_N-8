@@ -3,19 +3,23 @@ from .forms import IntervencionForm
 from .models import Intervencion
 from django.conf import settings
 from django.core.mail import send_mail
-
+from django.core.paginator import Paginator  
 
 def CargarTablaIncidencias(request):
     token = request.GET.get("token", "")
     terminoBusqueda = request.GET.get('buscar', '')
     
     if terminoBusqueda:
-        intervenciones = Intervencion.objects.filter(TipoIntervencion__icontains=terminoBusqueda)
+        intervenciones = Intervencion.objects.filter(TipoIntervencion__icontains=terminoBusqueda).order_by('Codigo')
     else:
-        intervenciones = Intervencion.objects.all()
+        intervenciones = Intervencion.objects.all().order_by('Codigo')
+        
+    paginator = Paginator(intervenciones, 8)
+    numero_pagina = request.GET.get("page")
+    incidencias_paginadas = paginator.get_page(numero_pagina)
         
     return render(request, 'Incidencias/Tabla.html', {
-        'Incidencias': intervenciones, 
+        'Incidencias': incidencias_paginadas, 
         'jwt_token': token,
         'busqueda': terminoBusqueda
     })

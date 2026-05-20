@@ -49,5 +49,16 @@ Tabla Incidencias
     <a href="{% url 'IncidenciaNueva' %}?token={{ jwt_token }}"><button>Nueva Incidencia</button></a>
 </div>
 
+{% if Incidencias.has_previous %}
+    <a href="?page=1&token={{ jwt_token }}">Primero</a>
+    <a href="?page={{ Incidencias.previous_page_number }}&token={{ jwt_token }}">Anterior</a>
+{% endif %}
+
+<span>Página {{ Incidencias.number }} de {{ Incidencias.paginator.num_pages }}</span>
+
+{% if Incidencias.has_next %}
+    <a href="?page={{ Incidencias.next_page_number }}&token={{ jwt_token }}">Siguiente</a>
+    <a href="?page={{ Incidencias.paginator.num_pages }}&token={{ jwt_token }}">Último</a>
+{% endif %}
 
 {% endblock %}
