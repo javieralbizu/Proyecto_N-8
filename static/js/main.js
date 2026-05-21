@@ -1,4 +1,4 @@
-let tamano= 20;
+let tamano = 20;
 
 async function comprobarLogin() {
 
@@ -7,10 +7,12 @@ async function comprobarLogin() {
     const token = parametros.get("token");
 
 
-
     if (!token) {
         alert("Pagina sin token");
-        document.getElementById("botonNuevo").style.display = "none";
+        let privado = document.getElementsByClassName("privado")
+        for (let i = 0; i < privado.length; i++) {
+            privado[i].style.display = "none";
+        }
         return;
     }
 
@@ -24,7 +26,10 @@ async function comprobarLogin() {
     if (!respuesta.ok) {
         alert("No estas Logeado");
 
-        document.getElementById("botonNuevo").style.display = "none";
+        let privado = document.getElementsByClassName("privado")
+        for (let i = 0; i < privado.length; i++) {
+            privado[i].style.display = "none";
+        }
     }
     else {
         alert("Estas Logeado");
@@ -40,25 +45,25 @@ if (formulario) {
     };
 }
 
-function aumento (){
-    if(tamano < 30){
-    tamano+=1;
-    aplicarTamano();
+function aumento() {
+    if (tamano < 30) {
+        tamano += 1;
+        aplicarTamano();
     }
 }
 
-function disminuir (){
-    if(tamano > 8){
-    tamano-=1;
-    aplicarTamano();
+function disminuir() {
+    if (tamano > 8) {
+        tamano -= 1;
+        aplicarTamano();
     }
 }
 
 const elementos = document.querySelectorAll('p,h1,th,td,a,button');
 
-function aplicarTamano(){
+function aplicarTamano() {
 
-elementos.forEach(elemento => {
-  elemento.style.fontSize = tamano + "px";
-});
+    elementos.forEach(elemento => {
+        elemento.style.fontSize = tamano + "px";
+    });
 }
