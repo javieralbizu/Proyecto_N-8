@@ -6,8 +6,8 @@ from Activos.serializers import ActivosSerializer
 from Tecnico.serializers import TecnicosSerializer
 
 class IncidenciasSerializer(serializers.ModelSerializer):
-    activo = ActivosSerializer(read_only=True)
-    tecnico = TecnicosSerializer(read_only = True)
+    activo = ActivosSerializer(read_only=True, source='ActivoAsignado')
+    tecnico = TecnicosSerializer(read_only = True, source='TecnicoAsignado')
     """
     activo_id = serializers.PrimaryKeyRelatedField(
         queryset= Activo.objects.all(),
