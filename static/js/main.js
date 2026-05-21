@@ -1,10 +1,11 @@
-
+let tamano= 20;
 
 async function comprobarLogin() {
 
     const parametros = new URLSearchParams(window.location.search);
 
     const token = parametros.get("token");
+
 
 
     if (!token) {
@@ -37,4 +38,27 @@ if (formulario) {
     formulario.onsubmit = function () {
         alert("Formulario enviado correctamente");
     };
+}
+
+function aumento (){
+    if(tamano < 30){
+    tamano+=1;
+    aplicarTamano();
+    }
+}
+
+function disminuir (){
+    if(tamano > 8){
+    tamano-=1;
+    aplicarTamano();
+    }
+}
+
+const elementos = document.querySelectorAll('p,h1,th,td,a,button');
+
+function aplicarTamano(){
+
+elementos.forEach(elemento => {
+  elemento.style.fontSize = tamano + "px";
+});
 }
