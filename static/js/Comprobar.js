@@ -7,14 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
     formulario.dataset.iniciado = 'true';
 
     const boton = formulario.querySelector('button');
-    const inputs = formulario.querySelectorAll('input');
+    const inputs = formulario.querySelectorAll('input, select, textarea');
 
     boton.disabled = true;
 
+    // ─── Inicialización ──────────────────────────────────────────────────────
+    inputs.forEach(campo => {
 
-    inputs.forEach(input => {
-
-        let siguiente = input.nextElementSibling;
+        let siguiente = campo.nextElementSibling;
         while (siguiente && siguiente.tagName === 'SMALL') {
             const aEliminar = siguiente;
             siguiente = siguiente.nextElementSibling;
@@ -28,33 +28,45 @@ document.addEventListener('DOMContentLoaded', () => {
         error.style.minHeight = '1em';
         error.setAttribute('aria-live', 'polite');
 
-        input.insertAdjacentElement('afterend', error);
-        input.errorElemento = error;
-        input.touched = false;
+        campo.insertAdjacentElement('afterend', error);
+        campo.errorElemento = error;
+        campo.touched = false;
 
-        input.addEventListener('input', () => {
-            input.touched = true;
-            validarInput(input);
+        const evento = campo.tagName === 'SELECT' ? 'change' : 'input';
+
+        campo.addEventListener(evento, () => {
+            campo.touched = true;
+            validarCampo(campo);
             actualizarBoton();
         });
 
-        input.addEventListener('blur', () => {
-            input.touched = true;
-            validarInput(input);
+        campo.addEventListener('blur', () => {
+            campo.touched = true;
+            validarCampo(campo);
             actualizarBoton();
         });
     });
 
-
-    function validarInput(input) {
-        const error = input.errorElemento;
-        const valor = input.value.trim();
+    // ─── Validación individual (visual) ─────────────────────────────────────
+    function validarCampo(campo) {
+        const error = campo.errorElemento;
+        const valor = campo.value.trim();
+        const nombre = campo.name;
         let mensaje = '';
 
-        if (valor === '') {
+        if (campo.tagName === 'SELECT') {
+            if (!valor || valor === '' || valor === '0') {
+                mensaje = 'Selecciona una opción';
+            }
+        }
+
+        else if (valor === '') {
             mensaje = 'Campo obligatorio';
-        } else {
-            switch (input.name) {
+        }
+
+        else {
+            switch (nombre) {
+                // ── Formulario Técnico ────────────────────────────────────
                 case 'DNI':
                     if (!/^\d{8}[A-Za-z]$/.test(valor))
                         mensaje = 'DNI incorrecto (ej: 12345678A)';
@@ -75,51 +87,117 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (!/^\d{9}$/.test(valor))
                         mensaje = 'Teléfono incorrecto (9 dígitos)';
                     break;
+
+                // ── Formulario Intervención ───────────────────────────────
+                case 'Codigo':
+                    if (!/^\d+$/.test(valor))
+                        mensaje = 'El código debe ser numérico';
+                    else if (parseInt(valor) <= 0)
+                        mensaje = 'El código debe ser mayor que 0';
+                    break;
+                case 'FechaApertura':
+                    if (!esFechaValida(valor))
+                        mensaje = 'Fecha de apertura inválida';
+                    break;
+                case 'FechaCierre': {
+                    if (!esFechaValida(valor)) {
+                        mensaje = 'Fecha de cierre inválida';
+                    } else {
+                        const apertura = formulario.querySelector('[name="FechaApertura"]');
+                        if (apertura && apertura.value && valor < apertura.value)
+                            mensaje = 'No puede ser anterior a la fecha de apertura';
+                    }
+                    break;
+                }
+                case 'TipoIntervencion':
+                    if (valor.length < 3)
+                        mensaje = 'Demasiado corto (mín. 3 caracteres)';
+                    break;
+                case 'Descripcion':
+                    if (valor.length < 5)
+                        mensaje = 'Demasiado corta (mín. 5 caracteres)';
+                    break;
             }
         }
 
         const valido = mensaje === '';
 
-        if (input.touched) {
+        if (campo.touched) {
             error.textContent = mensaje;
-            input.style.border = valido ? '2px solid green' : '2px solid red';
+            campo.style.border = valido ? '2px solid green' : '2px solid red';
         }
 
         return valido;
     }
 
+    // ─── Validación pura (sin tocar el DOM) ──────────────────────────────────
+    function esValido(campo) {
+        const valor = campo.value.trim();
+        const nombre = campo.name;
 
-    function esValido(input) {
-        const valor = input.value.trim();
+        if (campo.tagName === 'SELECT')
+            return valor && valor !== '' && valor !== '0';
+
         if (valor === '') return false;
-        switch (input.name) {
+
+        switch (nombre) {
+            // ── Formulario Técnico ────────────────────────────────────────
             case 'DNI':     return /^\d{8}[A-Za-z]$/.test(valor);
             case 'Nombre':  return valor.length >= 2;
             case 'Apellido':return valor.length >= 2;
             case 'Email':   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor);
             case 'Telefono':return /^\d{9}$/.test(valor);
-            default:        return true;
+
+            // ── Formulario Intervención ───────────────────────────────────
+            case 'Codigo':  return /^\d+$/.test(valor) && parseInt(valor) > 0;
+            case 'FechaApertura': return esFechaValida(valor);
+            case 'FechaCierre': {
+                if (!esFechaValida(valor)) return false;
+                const apertura = formulario.querySelector('[name="FechaApertura"]');
+                if (apertura && apertura.value && valor < apertura.value) return false;
+                return true;
+            }
+            case 'TipoIntervencion': return valor.length >= 3;
+            case 'Descripcion':      return valor.length >= 5;
+
+            default: return true;
         }
     }
 
+    // ─── Helper fecha ────────────────────────────────────────────────────────
+    function esFechaValida(valor) {
+        if (!valor) return false;
+        return !isNaN(new Date(valor).getTime());
+    }
 
+    // ─── Actualizar botón ────────────────────────────────────────────────────
     function actualizarBoton() {
         boton.disabled = ![...inputs].every(esValido);
     }
 
+    // Revalidar FechaCierre si cambia FechaApertura
+    const fechaApertura = formulario.querySelector('[name="FechaApertura"]');
+    const fechaCierre   = formulario.querySelector('[name="FechaCierre"]');
+    if (fechaApertura && fechaCierre) {
+        fechaApertura.addEventListener('change', () => {
+            if (fechaCierre.touched) {
+                validarCampo(fechaCierre);
+                actualizarBoton();
+            }
+        });
+    }
 
+    // ─── Submit ──────────────────────────────────────────────────────────────
     boton.addEventListener('click', () => {
 
-
-        inputs.forEach(input => {
-            input.touched = true;
-            validarInput(input);
+        inputs.forEach(campo => {
+            campo.touched = true;
+            validarCampo(campo);
         });
-
 
         if ([...inputs].every(esValido)) {
             console.log('Formulario enviado correctamente ✓');
- 
+            // formulario.submit();
         }
     });
 

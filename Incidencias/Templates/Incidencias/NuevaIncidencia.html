@@ -7,11 +7,10 @@ Añadir Intervencion
 {% block content %}
 
 <h1>Formulario Incidencia</h1>
-<form method="post">
+<form method="post" class="formulario">
 
     {% csrf_token %} 
-    {{ form }} <!--Esto es para poner los input en columna. Esto mas adelante hay que quitar .asp y utilizar flex direction column-->
-    
+    {{ form }} 
     <button type="submit">Guardar</button>
 </form>
 {% endblock %}
