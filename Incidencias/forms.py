@@ -16,7 +16,7 @@ class IntervencionForm(forms.ModelForm):
     class Meta:
         model = models.Intervencion
         fields = ['Codigo','FechaApertura','FechaCierre','TipoIntervencion','Descripcion','TecnicoAsignado','ActivoAsignado']
-        labels = {'Codigo':'Código', 'FechaApertura':'Fecha de Apertura', 'FechaCierre':'Fecha de Cierre','Descripcion':'Descripción' }
+        labels = {'Codigo':'Código', 'FechaApertura':'Fecha de Apertura', 'FechaCierre':'Fecha de Cierre','Descripcion':'Descripción', 'TipoIntervencion': 'Tipo Intervencion'  }
         widgets = { 
             'Codigo' : forms.NumberInput(),
             'FechaApertura' : forms.DateInput(format='%Y-%m-%d',attrs={'type':'date'}),
