@@ -1,21 +1,26 @@
 from .forms import TecnicoForm
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Tecnico
+from django.core.paginator import Paginator
 
 
 def CargarTabla(request):
     token = request.GET.get("token", "")
     terminoBusqueda = request.GET.get('buscar', '')
 
+    
     if terminoBusqueda:
-       
-        tecnicos = Tecnico.objects.filter(Nombre__icontains=terminoBusqueda)
+        tecnicos = Tecnico.objects.filter(Nombre__icontains=terminoBusqueda).order_by('id')
     else:
-      
-        tecnicos = Tecnico.objects.all()
+        tecnicos = Tecnico.objects.all().order_by('id')
+        
+    
+    paginator = Paginator(tecnicos, 8)
+    numero_pagina = request.GET.get("page")
+    tecnicos_paginados = paginator.get_page(numero_pagina)
         
     return render(request, "Tecnico/Tabla.html", {
-        "lista": tecnicos, 
+        "lista": tecnicos_paginados, 
         "jwt_token": token,
         "busqueda": terminoBusqueda
     })
