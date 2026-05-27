@@ -8,6 +8,18 @@ header {
     justify-content: space-between;
 }
 
+.tamano{
+   margin-left: 50px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.tamano button{
+    background-color: white;
+    border-radius: 100px;
+}
 header nav {
     /*margin: 0 auto; */
     display: flex;

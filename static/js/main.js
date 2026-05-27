@@ -1,4 +1,4 @@
-let tamano = 20;
+let tamano = 15;
 
 async function comprobarLogin() {
 
@@ -57,7 +57,7 @@ function disminuir() {
     }
 }
 
-const elementos = document.querySelectorAll('p,h1,th,td,a,button');
+const elementos = document.querySelectorAll('p,h1,th,td,a,button,label');
 
 function aplicarTamano() {
 
