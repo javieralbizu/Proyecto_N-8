@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% extends "HTML/base.html" %}
+{% load static %}
 {% block title %}
 Añadir Activo
 {% endblock %}
@@ -12,4 +13,5 @@ Añadir Activo
     
     <button type="submit">Guardar</button>
 </form>
+  <script src="{% static 'js/Comprobar.js' %}"></script>
 {% endblock %}

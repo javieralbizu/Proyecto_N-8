@@ -67,7 +67,7 @@ function aplicarTamano() {
         elemento.style.fontSize = tamano + "px";
     });
 }
-
+/*
 document.addEventListener("DOMContentLoaded", function () {
 
     const formulario = document.querySelector("form");
@@ -255,4 +255,4 @@ document.addEventListener('DOMContentLoaded', () => {
         boton.disabled = !valido;
     }
 
-});
+}); */
