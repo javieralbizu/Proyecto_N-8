@@ -27,7 +27,7 @@ Tabla Incidencias
         <th>Descripción</th>
         <th>Técnico asignado</th>
         <th>Activo asignado</th>
-        <th>Acciones</th>
+        <th class="privado">Acciones</th>
     </tr>
     {% for Intervencion in Incidencias %}
     <tr>
@@ -38,14 +38,14 @@ Tabla Incidencias
         <td>{{ Intervencion.Descripcion }}</td>
         <td>{{ Intervencion.TecnicoAsignado }}</td>
         <td>{{ Intervencion.ActivoAsignado }}</td>
-        <td>
+        <td class="privado">
             <a href="{% url 'EditarIncidencia' Intervencion.id %}?token={{ jwt_token }}"><button class="editar">Editar</button></a>
             <a href="{% url 'EliminarIncidencia' Intervencion.id %}?token={{ jwt_token }}"><button class="eliminar">Eliminar</button></a>
         </td>
     </tr>
     {% endfor %}
 </table>
-<div class="contenedor_boton">
+<div class="contenedor_boton privado">
     <a href="{% url 'IncidenciaNueva' %}?token={{ jwt_token }}"><button>Nueva Incidencia</button></a>
 </div>
 

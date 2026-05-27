@@ -26,7 +26,7 @@ Tabla Activos
         <th>Fecha instalacion</th>
         <th>Ubicación</th>
         <th>Estado operativo</th>
-        <th>Acciones</th>
+        <th class="privado">Acciones</th>
     </tr>
     {% for Activo in Activos %}
     <tr>
@@ -38,14 +38,14 @@ Tabla Activos
         <td>{{ Activo.FechaInstalacion }}</td>
         <td>{{ Activo.Ubicacion }}</td>
         <td>{{ Activo.EstadoOperativo }}</td>
-        <td>
+        <td class="privado">
             <a href="{% url 'EditarActivo' Activo.id %}?token={{ jwt_token }}"><button class="editar">Editar</button></a>
             <a href="{% url 'EliminarActivo' Activo.id %}?token={{ jwt_token }}"><button class="eliminar">Eliminar</button></a>
         </td>
     </tr>
     {% endfor %}
 </table>
-<div class="contenedor_boton">
+<div class="contenedor_boton privado">
     <a href="{% url 'NuevoActivo' %}?token={{ jwt_token }}"><button>Nuevo Activo</button></a>
 </div>
 {% if Activos.has_other_pages %}
