@@ -60,7 +60,7 @@ function disminuir() {
     }
 }
 
-const elementos = document.querySelectorAll('p,th,td,a,button,label');
+const elementos = document.querySelectorAll('p,th,td,a,button,label,input,select');
 const titulos = document.querySelectorAll('h1');
 
 function aplicarTamano() {
