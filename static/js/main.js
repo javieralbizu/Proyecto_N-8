@@ -1,4 +1,5 @@
-let tamano = 15;
+let tamanoContenido = 15;
+let tamanoTitulo = 32;
 
 async function comprobarLogin() {
 
@@ -8,7 +9,7 @@ async function comprobarLogin() {
 
 
     if (!token) {
-       
+
         let privado = document.getElementsByClassName("privado")
         for (let i = 0; i < privado.length; i++) {
             privado[i].style.display = "none";
@@ -16,22 +17,22 @@ async function comprobarLogin() {
         return;
     }
 
-    const respuesta = await fetch("http://127.0.0.1:8000/comprobar/", {
-
+    fetch("/comprobar/", {
         headers: {
             "Authorization": "Bearer " + token
         }
-    });
-
-    if (!respuesta.ok) {
-        
-
-        let privado = document.getElementsByClassName("privado")
-        for (let i = 0; i < privado.length; i++) {
-            privado[i].style.display = "none";
-        }
-    }
-
+    })
+        .then(respuesta => {
+            if (!respuesta.ok) {
+                let privado = document.getElementsByClassName("privado");
+                for (let i = 0; i < privado.length; i++) {
+                    privado[i].style.display = "none";
+                }
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
 }
 comprobarLogin();
 
@@ -44,24 +45,31 @@ if (formulario) {
 }
 
 function aumento() {
-    if (tamano < 30) {
-        tamano += 1;
+    if (tamanoContenido < 30) {
+        tamanoContenido += 1;
+        tamanoTitulo += 1;
         aplicarTamano();
     }
 }
 
 function disminuir() {
-    if (tamano > 8) {
-        tamano -= 1;
+    if (tamanoContenido > 9) {
+        tamanoContenido -= 1;
+        tamanoTitulo -= 1;
         aplicarTamano();
     }
 }
 
-const elementos = document.querySelectorAll('p,h1,th,td,a,button,label');
+const elementos = document.querySelectorAll('p,th,td,a,button,label');
+const titulos = document.querySelectorAll('h1');
 
 function aplicarTamano() {
 
     elementos.forEach(elemento => {
-        elemento.style.fontSize = tamano + "px";
+        elemento.style.fontSize = tamanoContenido + "px";
     });
+
+    titulos.forEach(t => {
+        t.style.fontSize = tamanoTitulo + "px";
+    })
 }

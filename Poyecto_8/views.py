@@ -14,14 +14,6 @@ def login(request):
     return render(request,'HTML/Login.html')
 
 
-#@api_view(['GET'])
-#@permission_classes([IsAuthenticated])
-
-#def comprobar_token(request):
- #   return Response({
-   #     "ok": True
-   # })
-
 class comprobar_token(APIView):
     permission_classes = [IsAuthenticated]
     def get(self, request):
