@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if ([...inputs].every(esValido)) {
-            console.log('Formulario enviado correctamente ✓');
+            console.log('Formulario enviado correctamente ');
         }
     });
 

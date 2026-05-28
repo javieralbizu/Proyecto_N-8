@@ -160,7 +160,6 @@ EMAIL_HOST_PASSWORD = config('USER_MAIL_PASSWORD')
 EMAIL_USE_TLS = True
 
 CSRF_TRUSTED_ORIGINS = [
-
     'https://shelf-magical-congenial.ngrok-free.dev',
 ]
 

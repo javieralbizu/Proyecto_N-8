@@ -17,15 +17,14 @@ async function comprobarLogin() {
         return;
     }
 
-    const respuesta = await fetch("http://127.0.0.1:8000/comprobar/", {
+    const respuesta = await fetch("https://shelf-magical-congenial.ngrok-free.dev/comprobar/", {
 
         headers: {
-            "Authorization": "Bearer " + token,
+            "Authorization": "Bearer " + token
         }
     });
 
     if (!respuesta.ok) {
-
 
         let privado = document.getElementsByClassName("privado")
         for (let i = 0; i < privado.length; i++) {
