@@ -37,6 +37,7 @@ ALLOWED_HOSTS = ["*"]
 
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -51,6 +52,7 @@ INSTALLED_APPS = [
     "Incidencias",
     'rest_framework',
     'rest_framework_simplejwt',
+
 ]
 
 MIDDLEWARE = [
@@ -158,6 +160,7 @@ EMAIL_HOST_PASSWORD = config('USER_MAIL_PASSWORD')
 EMAIL_USE_TLS = True
 
 CSRF_TRUSTED_ORIGINS = [
+
     'https://shelf-magical-congenial.ngrok-free.dev',
 ]
 

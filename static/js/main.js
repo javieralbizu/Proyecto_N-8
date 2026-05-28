@@ -17,22 +17,22 @@ async function comprobarLogin() {
         return;
     }
 
-    fetch("/comprobar/", {
+    const respuesta = await fetch("http://127.0.0.1:8000/comprobar/", {
+
         headers: {
-            "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + token,
         }
-    })
-        .then(respuesta => {
-            if (!respuesta.ok) {
-                let privado = document.getElementsByClassName("privado");
-                for (let i = 0; i < privado.length; i++) {
-                    privado[i].style.display = "none";
-                }
-            }
-        })
-        .catch(error => {
-            console.error("Error:", error);
-        });
+    });
+
+    if (!respuesta.ok) {
+
+
+        let privado = document.getElementsByClassName("privado")
+        for (let i = 0; i < privado.length; i++) {
+            privado[i].style.display = "none";
+        }
+    }
+
 }
 comprobarLogin();
 
@@ -53,14 +53,14 @@ function aumento() {
 }
 
 function disminuir() {
-    if (tamanoContenido > 9) {
+    if (tamanoContenido > 8) {
         tamanoContenido -= 1;
         tamanoTitulo -= 1;
         aplicarTamano();
     }
 }
 
-const elementos = document.querySelectorAll('p,th,td,a,button,label,input,select');
+const elementos = document.querySelectorAll('p,th,td,a,button,label,input');
 const titulos = document.querySelectorAll('h1');
 
 function aplicarTamano() {
@@ -69,7 +69,8 @@ function aplicarTamano() {
         elemento.style.fontSize = tamanoContenido + "px";
     });
 
-    titulos.forEach(t => {
-        t.style.fontSize = tamanoTitulo + "px";
-    })
+    titulos.forEach(titulo => {
+        titulo.style.fontSize = tamanoTitulo + "px";
+    });
 }
+
