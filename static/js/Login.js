@@ -3,12 +3,13 @@ function conectar() {
     const usuario = document.getElementById("user").value;
     const clave = document.getElementById("pass").value;
 
+
     if (!usuario || !clave) {
         alert("Por favor, rellena todos los campos");
         return;
     }
 
-    fetch("http://127.0.0.1:8000/api/token/", {
+    fetch("/api/token/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -26,7 +27,7 @@ function conectar() {
         .then(resultado => {
             if (resultado.ok) {
                 const token = resultado.datos.access;
-                window.location.href = "http://127.0.0.1:8000/?token=" + token;
+                window.location.href = "/?token=" + token;
             } else {
                 alert("Usuario o contraseña incorrectos");
             }

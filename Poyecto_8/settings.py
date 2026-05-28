@@ -36,6 +36,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
     "Tecnico",
     "Incidencias",
     'rest_framework',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -154,3 +156,12 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = config('USER_MAIL')
 EMAIL_HOST_PASSWORD = config('USER_MAIL_PASSWORD')
 EMAIL_USE_TLS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://shelf-magical-congenial.ngrok-free.dev',
+]
+
+
+
+
+
